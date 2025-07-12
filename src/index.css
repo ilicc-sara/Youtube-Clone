@@ -23,9 +23,26 @@ body {
   flex-direction: column;
   width: 302px;
   text-align: left;
+  gap: 10px;
 }
 
 .thumb-nail {
   width: 100%;
   height: 220px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.chanel {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.616);
+}
+
+.time-uploaded {
+  font-size: 12px;
+  font-weight: 500;
 }
