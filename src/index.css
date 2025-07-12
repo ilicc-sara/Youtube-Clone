@@ -24,6 +24,9 @@ body {
   width: 302px;
   text-align: left;
   gap: 10px;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding-bottom: 10px;
+  border: 0.5px solid white;
 }
 
 .thumb-nail {
@@ -32,17 +35,20 @@ body {
 }
 
 .title {
+  margin-left: 10px;
   font-size: 18px;
   font-weight: 600;
 }
 
 .chanel {
+  margin-left: 10px;
   font-size: 16px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.616);
 }
 
 .time-uploaded {
+  margin-left: 10px;
   font-size: 12px;
   font-weight: 500;
 }
