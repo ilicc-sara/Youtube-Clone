@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [videos, setVideos] = useState(null);
 
   //   useEffect(() => {
   //     const fetchPost = async () => {
@@ -39,7 +39,9 @@ function App() {
       try {
         const response = await fetch(url, options);
         const result = await response.json();
-        console.log(result);
+        console.log(result.items);
+
+        setVideos(result.items);
       } catch (error) {
         console.error(error);
       }
@@ -48,16 +50,106 @@ function App() {
     fetchPost();
   }, []);
 
+  function formatDate(string) {
+    const index = string.indexOf("T");
+
+    return string.slice(0, index);
+  }
+
   return (
     <>
       <h1>YouTube</h1>
 
-      <article className="video-article">
-        <img className="thumbnail" src="./hqdefault.jpg" />
-        <p className="title">Title of the Video</p>
-        <p className="chanel">Chanel that uploaded this video</p>
-        <p className="time-uploaded">3 yesrs ago</p>
-      </article>
+      <main className="video-container">
+        {videos &&
+          videos.map((video, index) => (
+            <article key={index} className="video-article">
+              <img
+                className="thumbnail"
+                src={`${video.snippet.thumbnails.default.url}`}
+              />
+              <p className="title">{video.snippet.title}</p>
+              <p className="chanel">{video.snippet.channelTitle}</p>
+              <p className="time-uploaded">
+                {/* {video.snippet.publishedAt.split("")} */}
+                {formatDate(video.snippet.publishedAt)}
+              </p>
+            </article>
+          ))}
+
+        {/* <article className="video-article">
+          <img className="thumbnail" src="./hqdefault.jpg" />
+          <p className="title">Title of the Video</p>
+          <p className="chanel">Chanel that uploaded this video</p>
+          <p className="time-uploaded">3 yesrs ago</p>
+        </article>
+        <article className="video-article">
+          <img className="thumbnail" src="./hqdefault.jpg" />
+          <p className="title">Title of the Video</p>
+          <p className="chanel">Chanel that uploaded this video</p>
+          <p className="time-uploaded">3 yesrs ago</p>
+        </article>
+        <article className="video-article">
+          <img className="thumbnail" src="./hqdefault.jpg" />
+          <p className="title">Title of the Video</p>
+          <p className="chanel">Chanel that uploaded this video</p>
+          <p className="time-uploaded">3 yesrs ago</p>
+        </article>
+        <article className="video-article">
+          <img className="thumbnail" src="./hqdefault.jpg" />
+          <p className="title">Title of the Video</p>
+          <p className="chanel">Chanel that uploaded this video</p>
+          <p className="time-uploaded">3 yesrs ago</p>
+        </article>
+        <article className="video-article">
+          <img className="thumbnail" src="./hqdefault.jpg" />
+          <p className="title">Title of the Video</p>
+          <p className="chanel">Chanel that uploaded this video</p>
+          <p className="time-uploaded">3 yesrs ago</p>
+        </article>
+        <article className="video-article">
+          <img className="thumbnail" src="./hqdefault.jpg" />
+          <p className="title">Title of the Video</p>
+          <p className="chanel">Chanel that uploaded this video</p>
+          <p className="time-uploaded">3 yesrs ago</p>
+        </article>
+        <article className="video-article">
+          <img className="thumbnail" src="./hqdefault.jpg" />
+          <p className="title">Title of the Video</p>
+          <p className="chanel">Chanel that uploaded this video</p>
+          <p className="time-uploaded">3 yesrs ago</p>
+        </article>
+        <article className="video-article">
+          <img className="thumbnail" src="./hqdefault.jpg" />
+          <p className="title">Title of the Video</p>
+          <p className="chanel">Chanel that uploaded this video</p>
+          <p className="time-uploaded">3 yesrs ago</p>
+        </article>
+        <article className="video-article">
+          <img className="thumbnail" src="./hqdefault.jpg" />
+          <p className="title">Title of the Video</p>
+          <p className="chanel">Chanel that uploaded this video</p>
+          <p className="time-uploaded">3 yesrs ago</p>
+        </article>
+        <article className="video-article">
+          <img className="thumbnail" src="./hqdefault.jpg" />
+          <p className="title">Title of the Video</p>
+          <p className="chanel">Chanel that uploaded this video</p>
+          <p className="time-uploaded">3 yesrs ago</p>
+        </article>
+        <article className="video-article">
+          <img className="thumbnail" src="./hqdefault.jpg" />
+          <p className="title">Title of the Video</p>
+          <p className="chanel">Chanel that uploaded this video</p>
+          <p className="time-uploaded">3 yesrs ago</p>
+        </article>
+        <article className="video-article">
+          <img className="thumbnail" src="./hqdefault.jpg" />
+          <p className="title">Title of the Video</p>
+          <p className="chanel">Chanel that uploaded this video</p>
+          <p className="time-uploaded">3 yesrs ago</p>
+        </article> */}
+      </main>
     </>
   );
 }

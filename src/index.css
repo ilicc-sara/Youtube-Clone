@@ -18,10 +18,17 @@ body {
   color: white;
 }
 
+.video-container {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 20px;
+}
+
 .video-article {
   display: flex;
   flex-direction: column;
-  width: 302px;
+  width: 280px;
   text-align: left;
   gap: 10px;
   background-color: rgba(255, 255, 255, 0.15);
