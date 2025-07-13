@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import Article from "./Article";
 import "./App.css";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   const [videos, setVideos] = useState(null);
@@ -20,7 +27,6 @@ function App() {
       try {
         const response = await fetch(url, options);
         const result = await response.json();
-        // console.log(result.items);
 
         setVideos(result.items);
       } catch (error) {
@@ -61,10 +67,6 @@ function App() {
       Number(year) === yearOfUploading &&
       Number(month) === monthOfUploading
     ) {
-      // return daysDifference === 1
-      //   ? `${daysDifference} day ago`
-      //   : `${daysDifference} days ago`;
-
       if (daysDifference === 0) {
         return "Today";
       }
@@ -84,7 +86,6 @@ function App() {
         return "3 weeks ago";
       }
     }
-    // return dateOfUploading.join("-");
   }
 
   return (
