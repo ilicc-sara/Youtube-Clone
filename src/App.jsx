@@ -39,19 +39,53 @@ function App() {
     let year = new Date().getFullYear();
 
     const dateOfUploading = string.slice(0, index).split("-");
+    let yearOfUploading = Number(dateOfUploading[0]);
+    let monthOfUploading = Number(dateOfUploading[1]);
+    let dayOfUploading = Number(dateOfUploading[2]);
 
-    if (year > dateOfUploading[0]) {
-      return `${year - dateOfUploading[0]} years ago`;
+    console.log(dateOfUploading);
+    let yearDifference = year - yearOfUploading;
+    let monthDifference = month - monthOfUploading;
+    let daysDifference = day - dayOfUploading;
+
+    if (year > yearOfUploading) {
+      return yearDifference === 1
+        ? `${yearDifference} year ago`
+        : `${yearDifference} years ago`;
+    }
+    if (Number(year) === yearOfUploading && month !== monthOfUploading) {
+      return monthDifference === 1
+        ? `${monthDifference} month ago`
+        : `${monthDifference} months ago`;
     }
     if (
-      year == dateOfUploading[0] &&
-      Number(month) !== Number(dateOfUploading[1])
+      Number(year) === yearOfUploading &&
+      Number(month) === monthOfUploading
     ) {
-      return `${month - dateOfUploading[1]} months ago`;
+      // return daysDifference === 1
+      //   ? `${daysDifference} day ago`
+      //   : `${daysDifference} days ago`;
+
+      if (daysDifference === 0) {
+        return "Today";
+      }
+      if (daysDifference === 1) {
+        return "1 day ago";
+      }
+      if (daysDifference < 7) {
+        return `${daysDifference} days ago`;
+      }
+      if (daysDifference === 7 || (daysDifference > 7 && daysDifference < 14)) {
+        return `1 week  ago`;
+      }
+      if (daysDifference > 14 && daysDifference < 21) {
+        return `2 weeks ago`;
+      }
+      if (daysDifference > 21) {
+        return "3 weeks ago";
+      }
     }
-    if (month == dateOfUploading[1]) {
-      return `${day - dateOfUploading[2]} days ago`;
-    }
+    // return dateOfUploading.join("-");
   }
 
   return (
