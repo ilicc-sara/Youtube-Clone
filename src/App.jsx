@@ -5,16 +5,43 @@ import "./App.css";
 function App() {
   const [count, setCount] = useState(0);
 
+  //   useEffect(() => {
+  //     const fetchPost = async () => {
+  //       try {
+  //         const response = await fetch(
+  //           `https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=df4967c0b8msh2d8256548a51846p17389ajsn17ef79d2ed98
+  // `
+  //         );
+  //         // const videos = await response.json();
+  //         console.log(response);
+  //       } catch (error) {
+  //         console.log(error);
+  //       }
+  //     };
+
+  //     fetchPost();
+  //   }, []);
+
+  // const data = null;
+
   useEffect(() => {
+    const url =
+      "https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=7ghhRHRP6t4&part=id%2Csnippet&type=video&maxResults=50";
+    const options = {
+      method: "GET",
+      headers: {
+        "x-rapidapi-key": "df4967c0b8msh2d8256548a51846p17389ajsn17ef79d2ed98",
+        "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
+      },
+    };
+
     const fetchPost = async () => {
       try {
-        const response = await fetch(
-          `https://youtube-v31.p.rapidapi.com/videos?part=contentDetails,snippet,statistics&id=6er14t0WA38`
-        );
-        const videos = await response.json();
-        console.log(videos);
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log(result);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
 
