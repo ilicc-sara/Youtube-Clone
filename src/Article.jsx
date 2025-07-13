@@ -2,7 +2,7 @@ import React from "react";
 
 function Article(props) {
   const { thumbnail, title, chanel, time } = props;
-  console.log(time);
+
   return (
     <article className="video-article">
       <img className="thumbnail" src={thumbnail} />

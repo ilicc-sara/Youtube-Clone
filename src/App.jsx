@@ -20,7 +20,7 @@ function App() {
       try {
         const response = await fetch(url, options);
         const result = await response.json();
-        console.log(result.items);
+        // console.log(result.items);
 
         setVideos(result.items);
       } catch (error) {
@@ -43,7 +43,6 @@ function App() {
     let monthOfUploading = Number(dateOfUploading[1]);
     let dayOfUploading = Number(dateOfUploading[2]);
 
-    console.log(dateOfUploading);
     let yearDifference = year - yearOfUploading;
     let monthDifference = month - monthOfUploading;
     let daysDifference = day - dayOfUploading;
