@@ -5,25 +5,6 @@ import "./App.css";
 function App() {
   const [videos, setVideos] = useState(null);
 
-  //   useEffect(() => {
-  //     const fetchPost = async () => {
-  //       try {
-  //         const response = await fetch(
-  //           `https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=df4967c0b8msh2d8256548a51846p17389ajsn17ef79d2ed98
-  // `
-  //         );
-  //         // const videos = await response.json();
-  //         console.log(response);
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     };
-
-  //     fetchPost();
-  //   }, []);
-
-  // const data = null;
-
   useEffect(() => {
     const url =
       "https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=7ghhRHRP6t4&part=id%2Csnippet&type=video&maxResults=50";
@@ -53,7 +34,28 @@ function App() {
   function formatDate(string) {
     const index = string.indexOf("T");
 
-    return string.slice(0, index);
+    let day = new Date().getDate();
+    let month = new Date().getMonth() + 1;
+    let year = new Date().getFullYear();
+    const date = `${day}.${month}.${year}`;
+
+    const dateOfUploading = string.slice(0, index).split("-");
+    console.log(dateOfUploading);
+
+    if (year > dateOfUploading[0]) {
+      return `${year - dateOfUploading[0]} years ago`;
+    }
+
+    if (
+      year == dateOfUploading[0] &&
+      Number(month) !== Number(dateOfUploading[1])
+    ) {
+      return `${month - dateOfUploading[1]} months ago`;
+    }
+
+    if (month == dateOfUploading[1]) {
+      return `${day - dateOfUploading[2]} days ago`;
+    }
   }
 
   return (
@@ -78,72 +80,6 @@ function App() {
           ))}
 
         {/* <article className="video-article">
-          <img className="thumbnail" src="./hqdefault.jpg" />
-          <p className="title">Title of the Video</p>
-          <p className="chanel">Chanel that uploaded this video</p>
-          <p className="time-uploaded">3 yesrs ago</p>
-        </article>
-        <article className="video-article">
-          <img className="thumbnail" src="./hqdefault.jpg" />
-          <p className="title">Title of the Video</p>
-          <p className="chanel">Chanel that uploaded this video</p>
-          <p className="time-uploaded">3 yesrs ago</p>
-        </article>
-        <article className="video-article">
-          <img className="thumbnail" src="./hqdefault.jpg" />
-          <p className="title">Title of the Video</p>
-          <p className="chanel">Chanel that uploaded this video</p>
-          <p className="time-uploaded">3 yesrs ago</p>
-        </article>
-        <article className="video-article">
-          <img className="thumbnail" src="./hqdefault.jpg" />
-          <p className="title">Title of the Video</p>
-          <p className="chanel">Chanel that uploaded this video</p>
-          <p className="time-uploaded">3 yesrs ago</p>
-        </article>
-        <article className="video-article">
-          <img className="thumbnail" src="./hqdefault.jpg" />
-          <p className="title">Title of the Video</p>
-          <p className="chanel">Chanel that uploaded this video</p>
-          <p className="time-uploaded">3 yesrs ago</p>
-        </article>
-        <article className="video-article">
-          <img className="thumbnail" src="./hqdefault.jpg" />
-          <p className="title">Title of the Video</p>
-          <p className="chanel">Chanel that uploaded this video</p>
-          <p className="time-uploaded">3 yesrs ago</p>
-        </article>
-        <article className="video-article">
-          <img className="thumbnail" src="./hqdefault.jpg" />
-          <p className="title">Title of the Video</p>
-          <p className="chanel">Chanel that uploaded this video</p>
-          <p className="time-uploaded">3 yesrs ago</p>
-        </article>
-        <article className="video-article">
-          <img className="thumbnail" src="./hqdefault.jpg" />
-          <p className="title">Title of the Video</p>
-          <p className="chanel">Chanel that uploaded this video</p>
-          <p className="time-uploaded">3 yesrs ago</p>
-        </article>
-        <article className="video-article">
-          <img className="thumbnail" src="./hqdefault.jpg" />
-          <p className="title">Title of the Video</p>
-          <p className="chanel">Chanel that uploaded this video</p>
-          <p className="time-uploaded">3 yesrs ago</p>
-        </article>
-        <article className="video-article">
-          <img className="thumbnail" src="./hqdefault.jpg" />
-          <p className="title">Title of the Video</p>
-          <p className="chanel">Chanel that uploaded this video</p>
-          <p className="time-uploaded">3 yesrs ago</p>
-        </article>
-        <article className="video-article">
-          <img className="thumbnail" src="./hqdefault.jpg" />
-          <p className="title">Title of the Video</p>
-          <p className="chanel">Chanel that uploaded this video</p>
-          <p className="time-uploaded">3 yesrs ago</p>
-        </article>
-        <article className="video-article">
           <img className="thumbnail" src="./hqdefault.jpg" />
           <p className="title">Title of the Video</p>
           <p className="chanel">Chanel that uploaded this video</p>

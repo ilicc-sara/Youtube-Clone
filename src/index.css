@@ -28,6 +28,7 @@ body {
 .video-article {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 280px;
   text-align: left;
   gap: 10px;
