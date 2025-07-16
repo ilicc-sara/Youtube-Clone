@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
 import Article from "./Article";
 import "./App.css";
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from "@tanstack/react-query";
-
-const queryClient = new QueryClient();
 
 function App() {
   const [videos, setVideos] = useState(null);
@@ -18,7 +11,7 @@ function App() {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "df4967c0b8msh2d8256548a51846p17389ajsn17ef79d2ed98",
+        "x-rapidapi-key": "37b9fbdafamsh38ae9b00f9888abp1cb0e5jsn54745baf4c79",
         "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
       },
     };
@@ -31,6 +24,7 @@ function App() {
         setVideos(result.items);
       } catch (error) {
         console.error(error);
+        setVideos([]);
       }
     };
 
