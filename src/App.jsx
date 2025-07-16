@@ -21,7 +21,7 @@ function App() {
       try {
         const response = await fetch(url, options);
         const result = await response.json();
-        console.log(result);
+        console.log(result.items);
 
         setVideos(result.items);
       } catch (error) {
@@ -83,12 +83,6 @@ function App() {
   //     }
   //   }
   // }
-
-  const myDate = new Date("2021-07-16");
-
-  const timeAgo = formatDistanceToNow(myDate, { addSuffix: true });
-
-  console.log(timeAgo);
 
   function formatDate(string) {
     const index = string.indexOf("T");
